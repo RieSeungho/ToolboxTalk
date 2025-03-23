@@ -53,7 +53,11 @@ public class MemberMapperTest {
         final String existUsername = sampleMember.getUsername();
         final String notExistUsername = "notExistUsername";
 
+        boolean existUsernameResult = memberMapper.isUsernameNotExist(existUsername);
+        boolean notExistUsernameResult = memberMapper.isUsernameNotExist(notExistUsername);
 
+        Assertions.assertTrue(existUsernameResult);
+        Assertions.assertFalse(notExistUsernameResult);
     }
 
     @Test
