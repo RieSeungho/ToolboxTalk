@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seu.toolboxtalk.mapper.MemberMapper">
+
+    <!--    IS USERNAME NOT EXIST START    -->
+
+    <select id="isUsernameNotExist" resultType="boolean">
+
+        SELECT EXISTS(
+            SELECT
+                *
+            FROM
+                members
+            WHERE
+                username = #{username}
+        )
+
+    </select>
+
+    <!--    IS USERNAME NOT EXIST END    -->
+
+    <!--    MEMBER INSERT START    -->
+
+    <insert id="insertMember"
+            parameterType="Member"
+            keyColumn="id"
+            keyProperty="id"
+            useGeneratedKeys="true">
+
+        INSERT INTO members (
+            username,
+            password,
+            nickname,
+            email,
+            authority,
+            status,
+            created
+        ) VALUES (
+            #{username},
+            #{password},
+            #{nickname},
+            #{email},
+            #{authority},
+            #{status},
+            NOW()
+        )
+
+    </insert>
+
+    <!--    MEMBER INSERT END    -->
+
+    <!--    GET MEMBER BY USERNAME START    -->
+
+    <select id="getMemberByUsername" resultType="Member">
+
+        SELECT
+            id,
+            username,
+            password,
+            nickname,
+            authority,
+            status
+        FROM
+            members
+        WHERE
+            username = #{username}
+
+    </select>
+
+    <!--    GET MEMBER BY USERNAME END    -->
+
+    <!--    GET MEMBER BY ID START    -->
+
+    <select id="getMemberById" resultType="Member">
+
+        SELECT
+            id,
+            username,
+            nickname,
+            email,
+            authority,
+            status,
+            created,
+            updated
+        FROM
+            members
+        WHERE
+            id = #{id}
+
+    </select>
+
+    <!--    GET MEMBER BY ID END    -->
+
+    <!--    UPDATE MEMBER START    -->
+
+    <update id="updateMember" parameterType="Member">
+        UPDATE
+            members
+        SET
+            nickname = #{nickname},
+            email = #{email}
+        WHERE
+            id = #{id}
+    </update>
+
+    <!--    UPDATE MEMBER END    -->
+
+</mapper>
