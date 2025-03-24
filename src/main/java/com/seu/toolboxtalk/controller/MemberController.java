@@ -1,6 +1,8 @@
 package com.seu.toolboxtalk.controller;
 
+import com.seu.toolboxtalk.model.form.LoginForm;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,7 +29,9 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginPage() {
+    public String loginPage(Model model) {
+
+        model.addAttribute("loginForm", new LoginForm());
 
         return "member/login";
     }

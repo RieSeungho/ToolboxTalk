@@ -1,5 +1,6 @@
 package com.seu.toolboxtalk.mapper;
 
+import com.seu.toolboxtalk.exception.MemberDoesNotExistException;
 import com.seu.toolboxtalk.model.entity.Member;
 import org.junit.jupiter.api.*;
 import org.slf4j.Logger;
@@ -28,6 +29,8 @@ public class MemberMapperTest {
         sampleMember.setEmail("sample@seu.com");
         sampleMember.setAuthority("COM");
         sampleMember.setStatus(true);
+
+        insertMemberTest();
     }
 
     @AfterEach
@@ -48,8 +51,6 @@ public class MemberMapperTest {
 
     @Test
     void isUsernameNotExistTest() {
-        insertMemberTest();
-
         final String existUsername = sampleMember.getUsername();
         final String notExistUsername = "notExistUsername";
 
@@ -57,21 +58,63 @@ public class MemberMapperTest {
         boolean notExistUsernameResult = memberMapper.isUsernameNotExist(notExistUsername);
 
         Assertions.assertTrue(existUsernameResult);
+        logger.info("IS_USERNAME_EXIST_RESULT={}", existUsernameResult);
+
         Assertions.assertFalse(notExistUsernameResult);
+        logger.info("IS_USERNAME_NOT_EXIST_RESULT={}", notExistUsernameResult);
     }
 
     @Test
     void getMemberByUsernameTest() {
+        String username = sampleMember.getUsername();
+        Optional<Member> memberOptional = memberMapper.getMemberByUsername(username);
 
+        Assertions.assertTrue(memberOptional.isPresent());
+        Member member = memberOptional.get();
+
+        Assertions.assertEquals(username, member.getUsername());
+        logger.info("SAMPLE_USERNAME={}", username);
     }
 
     @Test
     void getMemberByIdTest() {
+        Integer id = sampleMember.getId();
+        Optional<Member> memberOptional = memberMapper.getMemberById(id);
 
+        Assertions.assertTrue(memberOptional.isPresent());
+        Member member = memberOptional.get();
+
+        Assertions.assertEquals(id, member.getId());
+        logger.info("SAMPLE_ID={}", id);
     }
 
     @Test
     void updateMemberTest() {
+        String temporaryEmail = "temporaryEmail@seu.com";
+        String temporaryNickname = "temporaryUsername";
+
+        sampleMember.setEmail(temporaryEmail);
+        sampleMember.setNickname(temporaryNickname);
+        int effectedRow = memberMapper.updateMember(sampleMember);
+
+        Assertions.assertEquals(1, effectedRow);
+        logger.info("UPDATE_MEMBER_EFFECTED_ROW={}", effectedRow);
+
+        Member member = memberMapper.getMemberById(sampleMember.getId())
+                .orElseThrow(() -> new MemberDoesNotExistException(("登録されていないユーザーです")));
+
+        Assertions.assertEquals(temporaryEmail, member.getEmail());
+        Assertions.assertEquals(temporaryNickname, member.getNickname());
+    }
+
+    @Test
+    void updateNullValueMemberTest() {
+
+
+        sampleMember.setNickname(null);
+
+        sampleMember.setEmail(null);
+
 
     }
 

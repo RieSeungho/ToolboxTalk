@@ -98,9 +98,17 @@
     <update id="updateMember" parameterType="Member">
         UPDATE
             members
-        SET
-            nickname = #{nickname},
-            email = #{email}
+        <set>
+            <if test="nickname != null">
+                nickname = #{nickname},
+            </if>
+            <if test="email != null">
+                email = #{email},
+            </if>
+            <if test="nickname != null || email != null">
+                updated = NOW()
+            </if>
+        </set>
         WHERE
             id = #{id}
     </update>
