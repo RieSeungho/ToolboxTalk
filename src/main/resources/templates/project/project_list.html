@@ -13,7 +13,8 @@
     <div class="section">
       <div class="columns is-multiline">
         <div th:each="project : ${projectList}" class="column is-one-third">
-          <a th:href="@{/project/detail(identifier=${project.externalKey})}">
+          <a th:href="@{/project/detail(identifier=${project.externalKey})}"
+             th:title="${project.title}">
             <div class="card">
               <div class="card-image">
                 <figure class="image is-4by3">
