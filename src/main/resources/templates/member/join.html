@@ -13,49 +13,49 @@
             <form th:action="@{/member/join}" th:object="${memberForm}" method="POST">
 
                 <div class="field">
-                    <label class="label">
+                    <label class="label" for="username">
                         <strong>ID</strong>
                         <small>(必須)</small>
                     </label>
                     <div class="control">
-                        <input th:field="*{username}" class="input" type="text" placeholder="IDを入力してください" />
+                        <input th:field="*{username}" class="input" id="username" type="text" placeholder="IDを入力してください" />
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">
+                    <label class="label" for="password">
                         <strong>パスワード</strong>
                         <small>(必須)</small>
                     </label>
                     <div class="control">
-                        <input th:field="*{password}" class="input" type="password" placeholder="パスワードを入力してください" />
+                        <input th:field="*{password}" class="input" id="password" type="password" placeholder="パスワードを入力してください" />
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">
+                    <label class="label" for="passwordConfirm">
                         <strong>パスワード再確認</strong>
                         <small>(必須)</small>
                     </label>
                     <div class="control">
-                        <input th:field="*{passwordConfirm}" class="input" type="email" placeholder="確認のために、パスワードを再度入力してください" />
+                        <input th:field="*{passwordConfirm}" class="input" id="passwordConfirm" type="password" placeholder="確認のために、パスワードを再度入力してください" />
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">
+                    <label class="label" for="nickname">
                         <strong>お名前</strong>
                         <small>(必須)</small>
                     </label>
                     <div class="control">
-                        <input class="input" type="email" placeholder="お名前を入力してください" />
+                        <input th:field="*{nickname}" class="input" id="nickname" type="text" placeholder="お名前を入力してください" />
                     </div>
                 </div>
 
                 <div class="field">
-                    <label class="label">メールアドレス</label>
+                    <label class="label" for="email">メールアドレス</label>
                     <div class="control">
-                        <input class="input" type="email" placeholder="e.g. alex@example.com" />
+                        <input th:field="*{email}" class="input" id="email" type="email" placeholder="メールアドレスを入力してください" />
                     </div>
                 </div>
 
