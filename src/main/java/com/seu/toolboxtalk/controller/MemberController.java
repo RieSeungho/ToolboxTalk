@@ -34,7 +34,8 @@ public class MemberController {
     }
 
     @PostMapping("/join")
-    public String memberJoin(@ModelAttribute @Valid MemberForm memberForm, Model model) {
+    public String memberJoin(@ModelAttribute @Valid MemberForm memberForm,
+                             Model model) {
 
         logger.info("MEMBER_FORM={}", memberForm);
 
@@ -42,7 +43,12 @@ public class MemberController {
     }
 
     @GetMapping("/login")
-    public String loginPage(Model model) {
+    public String loginPage(@RequestParam(required = false) String error, Model model) {
+
+        if (error != null) {
+            model.addAttribute("alert", "failure");
+            model.addAttribute("message", error);
+        }
 
         model.addAttribute("loginForm", new LoginForm());
 

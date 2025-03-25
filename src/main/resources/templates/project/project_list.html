@@ -7,50 +7,9 @@
 </head>
 <body>
 <main layout:fragment="content">
-  <header th:replace="fragment/fragment :: header('プロジェクト')"></header>
-  <nav th:replace="fragment/fragment :: projectListAdjustLevel(${projectList.size()})"></nav>
-  <div class="container">
-    <div class="content">
-      <div class="columns is-multiline">
-        <div th:each="project : ${projectList}" class="column is-one-third">
-          <a th:href="@{/project/detail/{identifier}(identifier=${project.externalKey})}"
-             th:title="${project.title}">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img
-                          src="https://bulma.io/assets/images/placeholders/1280x960.png"
-                          alt="Placeholder image"
-                  />
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-48x48">
-                      <img
-                              src="https://bulma.io/assets/images/placeholders/96x96.png"
-                              alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                  <div class="media-content" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
-                    <p th:text="${project.title}" class="title is-4">プロジェクト名</p>
-                    <p th:text="${project.member != null ? project.member.nickname : '会員情報'}" class="subtitle is-6">プロジェクトのユーザー名</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  <p th:text="${project.content.substring(0, 30)}" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">プロジェクト内容</p>
-                  <time th:text="${#temporals.format(project.created, 'yyyy年 MM月 dd日 HH:mm')}">0000年 00月 00日 00:00</time>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
+  <header th:replace="~{fragment/fragment :: header('プロジェクト')}"></header>
+  <nav th:replace="~{fragment/fragment :: projectListAdjustLevel(${projectList.size()})}"></nav>
+  <div th:replace="~{fragment/fragment :: projectListComponent(${projectList})}"></div>
 </main>
 </body>
 </html>

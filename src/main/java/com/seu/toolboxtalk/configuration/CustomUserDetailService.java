@@ -18,6 +18,7 @@ public class CustomUserDetailService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberMapper.getMemberByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("ユーザIDまたはパスワードに誤りがあるか、登録されていません。"));
+
         return CustomUserDetail
                 .builder()
                 .id(member.getId())

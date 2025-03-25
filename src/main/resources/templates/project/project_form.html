@@ -8,36 +8,8 @@
 <body>
 <main layout:fragment="content">
 
-  <header th:replace="fragment/fragment :: header('プロジェクト作成')"></header>
-
-  <div class="container">
-    <div class="section box">
-      <form th:action="@{/project/form}" method="POST">
-
-        <div class="field">
-          <label class="label" for="title">タイトル</label>
-          <div class="control">
-            <input class="input" id="title" type="text" placeholder="タイトルを入力してください"/>
-          </div>
-        </div>
-
-        <div class="field">
-          <label class="label" for="content">プロジェクト概要</label>
-          <div class="control">
-            <textarea class="textarea" id="content" placeholder="プロジェクト概要の内容を入力してください" rows="10"></textarea>
-          </div>
-        </div>
-
-        <div class="buttons">
-          <button class="button is-primary">
-            <strong>新しいプロジェクトを登録</strong>
-          </button>
-          <a th:href="@{/project}" class="button is-link">キャンセル</a>
-        </div>
-
-      </form>
-    </div>
-  </div>
+  <header th:replace="~{fragment/fragment :: header('プロジェクト作成')}"></header>
+  <div th:replace="~{fragment/fragment :: projectFormComponent(${projectForm})}"></div>
 
 </main>
 </body>

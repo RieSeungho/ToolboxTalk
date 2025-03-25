@@ -7,8 +7,8 @@
 </head>
 <body>
 <main layout:fragment="content">
-  <header th:replace="fragment/fragment :: header('プロジェクト詳細')"></header>
-  <nav th:replace="fragment/fragment :: projectDetailAdjustLevel(${projectDetail.externalKey})"></nav>
+  <header th:replace="~{fragment/fragment :: header('プロジェクト詳細')}"></header>
+  <nav th:replace="~{fragment/fragment :: projectDetailAdjustLevel(${projectDetail.externalKey})}"></nav>
   <div class="container">
     <div class="section box">
       <div class="content">
@@ -21,7 +21,7 @@
       <div th:utext="${projectDetail.content}" class="content"></div>
     </div>
   </div>
-  <th:block th:replace="fragment/fragment :: projectJoinModal(title=${projectDetail.title}, externalKey=${projectDetail.externalKey})"></th:block>
+  <th:block th:replace="~{fragment/fragment :: projectJoinModal(title=${projectDetail.title}, externalKey=${projectDetail.externalKey})}"></th:block>
 </main>
 </body>
 </html>

@@ -1,5 +1,5 @@
-<html xmlns:th="http://www.thymeleaf.org">
-
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <!--    HEAD START    -->
 <head th:fragment="head">
@@ -18,7 +18,7 @@
 
 <nav th:fragment="navbar" class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" th:href="@{/}">
             <span>Toolbox Talk</span>
         </a>
 
@@ -38,16 +38,16 @@
                     プロジェクト
                 </span>
             </a>
+        </div>
+
+        <div class="navbar-end">
             <a class="navbar-item" th:href="@{/personal}">
                 <i class="fa-solid fa-user"></i>
                 <span>
                     パーソナル
                 </span>
             </a>
-        </div>
-
-        <div class="navbar-end">
-            <a class="navbar-item">
+            <a class="navbar-item" th:href="@{/notice}">
                 <i class="fa-solid fa-bell"></i>
                 <span>
                     通知
@@ -55,12 +55,17 @@
             </a>
             <div class="navbar-item">
                 <div class="buttons">
-                    <a th:href="@{/member/join}" class="button is-primary">
+                    <a sec:authorize="isAnonymous()" th:href="@{/member/join}" class="button is-primary">
                         <strong>会員登録</strong>
                     </a>
-                    <a th:href="@{/member/login}" class="button is-light">
+                    <a sec:authorize="isAnonymous()" th:href="@{/member/login}" class="button is-light">
                         ログイン
                     </a>
+                    <form sec:authorize="isAuthenticated()" th:action="@{/logout}" method="POST">
+                        <button th:href="@{/member/login}" type="submit" class="button is-light">
+                            ログアウト
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -192,6 +197,86 @@
 </header>
 
 <!--    HEADER END    -->
+
+<!--    PROJECT LIST START    -->
+
+<div th:fragment="projectListComponent(projectList)" class="container">
+    <div class="content">
+        <div class="columns is-multiline">
+            <div th:each="project : ${projectList}" class="column is-one-third">
+                <a th:href="@{/project/detail/{identifier}(identifier=${project.externalKey})}"
+                   th:title="${project.title}">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-4by3">
+                                <img
+                                        src="https://bulma.io/assets/images/placeholders/1280x960.png"
+                                        alt="Placeholder image"
+                                />
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media">
+                                <div class="media-left">
+                                    <figure class="image is-48x48">
+                                        <img
+                                                src="https://bulma.io/assets/images/placeholders/96x96.png"
+                                                alt="Placeholder image"
+                                        />
+                                    </figure>
+                                </div>
+                                <div class="media-content" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                    <p th:text="${project.title}" class="title is-4">プロジェクト名</p>
+                                    <p th:text="${project.member != null ? project.member.nickname : '会員情報'}" class="subtitle is-6">プロジェクトのユーザー名</p>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <p th:text="${project.content.substring(0, 30)}" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">プロジェクト内容</p>
+                                <time th:text="${#temporals.format(project.created, 'yyyy年 MM月 dd日 HH:mm')}">0000年 00月 00日 00:00</time>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--    PROJECT LIST END    -->
+
+<!--    PROJECT FORM START    -->
+
+<div th:fragment="projectFormComponent(projectForm)" class="section">
+    <div class="content box">
+        <form th:action="@{/project/form}" th:object="${projectForm}" method="POST">
+
+            <div class="field">
+                <label class="label" for="title">タイトル</label>
+                <div class="control">
+                    <input th:field="*{title}" class="input" id="title" type="text" placeholder="タイトルを入力してください"/>
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="content">プロジェクト概要</label>
+                <div class="control">
+                    <textarea th:field="*{content}" class="textarea" id="content" placeholder="プロジェクト概要の内容を入力してください" rows="10"></textarea>
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="button is-primary">
+                    <strong>新しいプロジェクトを登録</strong>
+                </button>
+                <a th:href="@{/project}" class="button is-link">キャンセル</a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<!--    PROJECT FORM END    -->
 
 <!--    FOOTER START    -->
 
