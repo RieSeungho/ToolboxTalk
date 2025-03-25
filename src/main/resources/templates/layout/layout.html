@@ -2,8 +2,10 @@
 <html lang="ja" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head th:replace="fragment/fragment :: head"></head>
 <body>
-<navbar th:replace="fragment/fragment :: navbar"></navbar>
+<nav th:replace="fragment/fragment :: navbar"></nav>
+<th:block th:replace="fragment/fragment :: notification(alert=${alert}, message=${message})"></th:block>
 <th:block class="hero is-fullheight-with-navbar" layout:fragment="content"></th:block>
 <footer th:replace="fragment/fragment :: footer"></footer>
+<th:block th:replace="fragment/fragment :: script"></th:block>
 </body>
 </html>

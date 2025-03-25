@@ -1,6 +1,7 @@
 package com.seu.toolboxtalk.mapper;
 
 import com.seu.toolboxtalk.model.dto.ProjectDTO;
+import com.seu.toolboxtalk.model.entity.Project;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface ProjectMapper {
     List<ProjectDTO> getProjectListByTitle(String title);
     List<ProjectDTO> getProjectListByExternalKey(String externalKey);
     Optional<ProjectDTO> getProjectByExternalKey(String externalKey);
+    int insertProject(Project project);
 }

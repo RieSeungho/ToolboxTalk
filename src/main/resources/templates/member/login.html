@@ -7,43 +7,28 @@
 </head>
 <body>
 <main layout:fragment="content">
+    <header th:replace="fragment/fragment :: header('ログイン')"></header>
     <div class="container">
-
-        <div class="section">
-
-            <form action="">
+        <div class="section box">
+            <form th:action="@{/login}" th:object="${loginForm}" method="POST">
 
                 <div class="field">
-                    <label class="label">ユーザーID</label>
+                    <label class="label">ID</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="Text input">
+                        <input th:field="*{username}" class="input" type="text" placeholder="IDを入力してください" />
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">パスワード</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input class="input" type="text" placeholder="Text input" value="bulma">
-                        <span class="icon is-small is-left">
-                              <i class="fas fa-user"></i>
-                            </span>
-                        <span class="icon is-small is-right">
-                              <i class="fas fa-check"></i>
-                            </span>
+                    <div class="control">
+                        <input th:field="*{password}" class="input" type="password" placeholder="パスワードを入力してください" />
                     </div>
                 </div>
 
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link">ログイン</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-link is-light">キャンセル</button>
-                    </div>
-                </div>
+                <button class="button is-primary">ログイン</button>
 
             </form>
-
         </div>
     </div>
 </main>

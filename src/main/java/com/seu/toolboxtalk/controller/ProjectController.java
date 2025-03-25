@@ -3,12 +3,14 @@ package com.seu.toolboxtalk.controller;
 import com.seu.toolboxtalk.mapper.ProjectMapper;
 import com.seu.toolboxtalk.model.dto.ProjectDTO;
 import com.seu.toolboxtalk.model.entity.Project;
+import com.seu.toolboxtalk.model.form.ProjectForm;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -32,8 +34,8 @@ public class ProjectController {
         return "project/project_list";
     }
 
-    @GetMapping("/detail")
-    public String projectDetail(@RequestParam Optional<String> identifier,
+    @GetMapping("/detail/{identifier}")
+    public String projectDetail(@PathVariable Optional<String> identifier,
                                 Model model,
                                 RedirectAttributes redirectAttributes) {
         try {
@@ -56,7 +58,7 @@ public class ProjectController {
     @GetMapping("/form")
     public String projectForm(Model model) {
 
-        model.addAttribute("projectForm", new Project());
+        model.addAttribute("projectForm", new ProjectForm());
 
         return "project/project_form";
     }

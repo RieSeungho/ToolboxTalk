@@ -110,11 +110,8 @@ public class MemberMapperTest {
     @Test
     void updateNullValueMemberTest() {
 
-
         sampleMember.setNickname(null);
-
         sampleMember.setEmail(null);
-
 
     }
 

@@ -7,6 +7,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://kit.fontawesome.com/be314aa266.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/style/font.css}">
     <link rel="stylesheet" th:href="@{/node_modules/bulma/css/bulma.min.css}">
     <title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">Toolbox Talk</title>
@@ -32,19 +33,28 @@
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" th:href="@{/project}">
-                Project
+                <i class="fa-solid fa-table-list"></i>
+                <span>
+                    プロジェクト
+                </span>
             </a>
             <a class="navbar-item" th:href="@{/personal}">
-                Personal
+                <i class="fa-solid fa-user"></i>
+                <span>
+                    パーソナル
+                </span>
             </a>
         </div>
 
         <div class="navbar-end">
+            <a class="navbar-item">
+                <i class="fa-solid fa-bell"></i>
+                <span>
+                    通知
+                </span>
+            </a>
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="navbar-item">
-                        通知
-                    </a>
                     <a th:href="@{/member/join}" class="button is-primary">
                         <strong>会員登録</strong>
                     </a>
@@ -59,9 +69,22 @@
 
 <!--    NAVBAR END    -->
 
+<!--    NOTIFICATION FRAGMENT START    -->
+
+<div class="section" th:fragment="notification(alert, message)">
+    <div th:if="${message != null}"
+         th:classappend="${alert != 'success' ? 'is-danger' : 'is-success'}"
+         class="notification">
+        <button class="delete"></button>
+        <span th:text="${message}"></span>
+    </div>
+</div>
+
+<!--    NOTIFICATION FRAGMENT END    -->
+
 <!--    PROJECT LIST ADJUST LEVEL START    -->
 
-<div th:fragment="projectListAdjustLevel(projectListCount)" class="container">
+<nav th:fragment="projectListAdjustLevel(projectListCount)" class="section">
     <div class="level">
 
         <!--    LEFT SIDE START    -->
@@ -91,7 +114,7 @@
 
         <div class="level-right">
             <p class="level-item">
-                <a th:href="@{/project/form}" class="button is-success">
+                <a th:href="@{/project/form}" class="button is-link">
                     <strong>プロジェクトを作成</strong>
                 </a>
             </p>
@@ -100,21 +123,79 @@
         <!--    RIGHT SIDE END    -->
 
     </div>
-</div>
+</nav>
 
 <!--    PROJECT LIST ADJUST LEVEL END    -->
+
+<!--    PROJECT DETAIL ADJUST LEVEL START    -->
+
+<nav th:fragment="projectDetailAdjustLevel(identifier)" class="section">
+    <div class="level">
+
+        <!--    LEFT SIDE START    -->
+
+        <div class="level-left"></div>
+
+        <!--    LEFT SIDE END    -->
+
+        <!--    RIGHT SIDE START    -->
+
+        <div class="level-right">
+            <div class="buttons">
+                <button class="js-modal-trigger button is-link" data-target="modal-js-example">
+                    このプロジェクトに参加
+                </button>
+            </div>
+        </div>
+
+        <!--    RIGHT SIDE END    -->
+
+    </div>
+</nav>
+
+<!--    PROJECT DETAIL ADJUST LEVEL END    -->
+
+
+<!--    PROJECT JOIN MODAL START    -->
+
+<div th:fragment="projectJoinModal(title, externalKey)" id="modal-js-example" class="modal">
+    <div class="modal-background"></div>
+
+    <div class="modal-content">
+        <div class="section box">
+            <div class="content">
+                <span class="title">確認</span>
+            </div>
+            <p class="content">
+                <strong th:text="${title}"></strong>
+                というプロジェクトに参加しますか？
+                <br>
+            </p>
+            <form th:action="@{/project/join}" method="POST">
+                <input type="hidden" th:value="${externalKey}">
+                <button type="submit" class="button is-primary">参加</button>
+            </form>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+
+        <div class="has-text-centered	has-text-white-bis">ウィンドウの暗い部分をクリックするとキャンセルできます</div>
+    </div>
+</div>
+
+<!--    PROJECT JOIN MODAL END    -->
+
 
 <!--    HEADER START    -->
 
 <header th:fragment="header(phrase)" class="section has-text-centered has-text-black-bold">
-    <h1 th:text="${phrase}" class="is-size-2"></h1>
+    <h1 th:text="${phrase}" class="title"></h1>
 </header>
 
 <!--    HEADER END    -->
 
 <!--    FOOTER START    -->
 
-<footer th:fragment="footer" class="footer p-4">
+<footer th:fragment="footer" class="footer mt-6 p-4">
     <div class="content has-text-centered">
         <p>
             <strong>Toolbox Talk</strong> 2025
@@ -123,5 +204,11 @@
 </footer>
 
 <!--    FOOTER END    -->
+
+<th:block th:fragment="script">
+    <script th:src="@{/script/navbar.js}"></script>
+    <script th:src="@{/script/modal.js}"></script>
+    <script th:src="@{/script/notification.js}"></script>
+</th:block>
 
 </html>

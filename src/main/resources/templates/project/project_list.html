@@ -10,10 +10,10 @@
   <header th:replace="fragment/fragment :: header('プロジェクト')"></header>
   <nav th:replace="fragment/fragment :: projectListAdjustLevel(${projectList.size()})"></nav>
   <div class="container">
-    <div class="section">
+    <div class="content">
       <div class="columns is-multiline">
         <div th:each="project : ${projectList}" class="column is-one-third">
-          <a th:href="@{/project/detail(identifier=${project.externalKey})}"
+          <a th:href="@{/project/detail/{identifier}(identifier=${project.externalKey})}"
              th:title="${project.title}">
             <div class="card">
               <div class="card-image">
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="content">
-                  <p th:text="${project.content}" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">プロジェクト内容</p>
+                  <p th:text="${project.content.substring(0, 30)}" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">プロジェクト内容</p>
                   <time th:text="${#temporals.format(project.created, 'yyyy年 MM月 dd日 HH:mm')}">0000年 00月 00日 00:00</time>
                 </div>
               </div>

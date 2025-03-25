@@ -7,98 +7,61 @@
 </head>
 <body>
 <main layout:fragment="content">
+    <header th:replace="fragment/fragment :: header('会員登録')"></header>
     <div class="container">
-
-        <div class="section">
-
-            <form th:object="${memberForm}" action="/member/join" method="POST">
+        <div class="section box">
+            <form th:action="@{/member/join}" th:object="${memberForm}" method="POST">
 
                 <div class="field">
                     <label class="label">
-                        ユーザーID
+                        <strong>ID</strong>
                         <small>(必須)</small>
                     </label>
                     <div class="control">
-                        <input th:field="*{username}" class="input" type="text" placeholder="Text input">
+                        <input th:field="*{username}" class="input" type="text" placeholder="IDを入力してください" />
                     </div>
                 </div>
 
                 <div class="field">
                     <label class="label">
-                        パスワード
+                        <strong>パスワード</strong>
                         <small>(必須)</small>
                     </label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input th:field="*{password}" class="input is-success" type="text" placeholder="Text input" value="bulma">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                    <div class="control">
+                        <input th:field="*{password}" class="input" type="password" placeholder="パスワードを入力してください" />
                     </div>
-                    <p class="help is-success">This username is available</p>
                 </div>
 
                 <div class="field">
                     <label class="label">
-                        パスワード再入力
+                        <strong>パスワード再確認</strong>
                         <small>(必須)</small>
                     </label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input th:field="*{passwordConfirm}" class="input is-success" type="text" placeholder="Text input" value="bulma">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                    <div class="control">
+                        <input th:field="*{passwordConfirm}" class="input" type="email" placeholder="確認のために、パスワードを再度入力してください" />
                     </div>
-                    <p class="help is-success">This username is available</p>
                 </div>
 
                 <div class="field">
                     <label class="label">
-                        ニックネーム
+                        <strong>お名前</strong>
                         <small>(必須)</small>
                     </label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input th:field="*{nickname}" class="input is-success" type="text" placeholder="Text input" value="bulma">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-user"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                            <i class="fas fa-check"></i>
-                        </span>
+                    <div class="control">
+                        <input class="input" type="email" placeholder="お名前を入力してください" />
                     </div>
-                    <p class="help is-success">This username is available</p>
                 </div>
 
                 <div class="field">
                     <label class="label">メールアドレス</label>
-                    <div class="control has-icons-left has-icons-right">
-                        <input th:field="*{email}" class="input is-danger" type="email" placeholder="Email input" value="hello@">
-                        <span class="icon is-small is-left">
-                            <i class="fas fa-envelope"></i>
-                        </span>
-                        <span class="icon is-small is-right">
-                          <i class="fas fa-exclamation-triangle"></i>
-                        </span>
+                    <div class="control">
+                        <input class="input" type="email" placeholder="e.g. alex@example.com" />
                     </div>
-                    <p class="help is-danger">This email is invalid</p>
                 </div>
 
-                <div class="field is-grouped">
-                    <div class="control">
-                        <button class="button is-link">登録</button>
-                    </div>
-                    <div class="control">
-                        <button class="button is-link is-light">キャンセル</button>
-                    </div>
-                </div>
+                <button class="button is-primary">会員登録</button>
 
             </form>
-
         </div>
     </div>
 </main>

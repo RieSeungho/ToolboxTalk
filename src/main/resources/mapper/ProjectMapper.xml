@@ -88,4 +88,30 @@
             external_key = #{externalKey}
     </select>
 
+    <insert id="insertProject"
+            parameterType="Project"
+            keyColumn="id"
+            keyProperty="id"
+            useGeneratedKeys="true">
+
+        INSERT INTO projects (
+            member_id,
+            external_key,
+            title,
+            content,
+            permission,
+            status,
+            created
+        ) VALUES (
+            #{memberId},
+            #{externalKey},
+            #{title},
+            #{content},
+            #{permission},
+            #{status},
+            NOW()
+        )
+
+    </insert>
+
 </mapper>

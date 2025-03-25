@@ -8,18 +8,20 @@
 <body>
 <main layout:fragment="content">
   <header th:replace="fragment/fragment :: header('プロジェクト詳細')"></header>
+  <nav th:replace="fragment/fragment :: projectDetailAdjustLevel(${projectDetail.externalKey})"></nav>
   <div class="container">
-    <div class="section has-background-white-soft">
+    <div class="section box">
       <div class="content">
-        <h1 th:text="${projectDetail.title}">タイトル名</h1>
+        <h1 class="title" th:text="${projectDetail.title}">タイトル名</h1>
         <p>
           <strong th:text="${projectDetail.member.nickname}">作成者名</strong>
           <span th:text="${#temporals.format(projectDetail.created, 'yyyy年 MM月 dd日 HH:mm')}">0000年 00月 00日</span>
         </p>
       </div>
-      <div class="content">aa</div>
+      <div th:utext="${projectDetail.content}" class="content"></div>
     </div>
   </div>
+  <th:block th:replace="fragment/fragment :: projectJoinModal(title=${projectDetail.title}, externalKey=${projectDetail.externalKey})"></th:block>
 </main>
 </body>
 </html>
