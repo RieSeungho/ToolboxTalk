@@ -17,6 +17,9 @@ public class MemberForm {
     private String password;
 
     @NotBlank
+    private String passwordConfirm;
+
+    @NotBlank
     private String nickname;
 
     @Email

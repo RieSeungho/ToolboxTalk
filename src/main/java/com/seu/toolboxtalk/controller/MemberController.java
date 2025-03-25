@@ -1,11 +1,10 @@
 package com.seu.toolboxtalk.controller;
 
 import com.seu.toolboxtalk.model.form.LoginForm;
+import com.seu.toolboxtalk.model.form.MemberForm;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 /*
     MEMBER CONTROLLER
@@ -17,13 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MemberController {
 
     @GetMapping("/join")
-    public String joinPage() {
+    public String joinPage(Model model) {
+
+        model.addAttribute("memberForm", new MemberForm());
 
         return "member/join";
     }
 
     @PostMapping("/join")
-    public String memberJoin() {
+    public String memberJoin(@ModelAttribute MemberForm memberForm, Model model) {
 
         return "redirect:/";
     }

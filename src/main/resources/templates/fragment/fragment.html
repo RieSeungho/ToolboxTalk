@@ -44,10 +44,10 @@
                     <a class="navbar-item">
                         通知
                     </a>
-                    <a class="button is-primary">
+                    <a th:href="@{/member/join}" class="button is-primary">
                         <strong>会員登録</strong>
                     </a>
-                    <a class="button is-light">
+                    <a th:href="@{/member/login}" class="button is-light">
                         ログイン
                     </a>
                 </div>
@@ -90,7 +90,7 @@
 
         <div class="level-right">
             <p class="level-item">
-                <a th:href="@{/project/form}" class="button is-primary">
+                <a th:href="@{/project/form}" class="button is-success">
                     <strong>プロジェクトを作成</strong>
                 </a>
             </p>
