@@ -19,7 +19,7 @@ public class SecurityConfig {
                         .requestMatchers("/**").permitAll()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")
+                        .loginPage("/member/login")
                         .defaultSuccessUrl("/")
                         .permitAll()
                 );

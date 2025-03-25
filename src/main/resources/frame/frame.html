@@ -1,0 +1,338 @@
+<html>
+
+<!--    HEAD START    -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/static/node_modules/bulma/css/bulma.min.css">
+    <title>Toolbox Talk</title>
+</head>
+<!--    HEAD END    -->
+
+<body>
+
+    <!--    NAVBAR START    -->
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item" href="https://bulma.io">
+                <span>Toolbox Talk</span>
+            </a>
+
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    Project
+                </a>
+
+                <a class="navbar-item">
+                    Personal
+                </a>
+            </div>
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <div class="buttons">
+                        <a class="navbar-item">
+                            通知
+                        </a>
+                        <a class="button is-primary">
+                            <strong>会員登録</strong>
+                        </a>
+                        <a class="button is-light">
+                            ログイン
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!--    NAVBAR END    -->
+
+    <!--    MAIN START    -->
+
+    <main class="content is-fullheight-with-navbar">
+
+        <header class="section has-text-centered has-text-black-bold">
+            <h1 class="is-size-2">プロジェクト</h1>
+        </header>
+
+        <!--    PROJECT CARD START    -->
+
+        <div class="container">
+
+            <!--    PROJECT ADJUST BAR START    -->
+
+                <nav class="level">
+
+                    <!--    LEFT SIDE START    -->
+
+                    <div class="level-left">
+                        <div class="level-item">
+                            <p class="subtitle is-5"><strong>123</strong> posts</p>
+                        </div>
+                        <div class="level-item">
+                            <div class="field has-addons">
+                                <p class="control">
+                                    <input class="input is-fullwidth" type="text" placeholder="Find a post" />
+                                </p>
+                                <p class="control">
+                                    <button class="button">Search</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--    LEFT SIDE END    -->
+
+                    <!--    RIGHT SIDE START    -->
+
+                    <div class="level-right">
+                        <p class="level-item">
+                            <a class="button is-primary">
+                                <strong>プロジェクトを作成</strong>
+                            </a>
+                        </p>
+                    </div>
+
+                    <!--    RIGHT SIDE END    -->
+
+                </nav>
+
+            <!--    PROJECT ADJUST BAR END    -->
+
+
+            <div class="section">
+
+                <div class="columns is-multiline">
+                    <div class="column is-one-third">
+                        <a href="#">
+                            <div class="card">
+                                <div class="card-image">
+                                    <figure class="image is-4by3">
+                                        <img
+                                                src="https://bulma.io/assets/images/placeholders/1280x960.png"
+                                                alt="Placeholder image"
+                                        />
+                                    </figure>
+                                </div>
+                                <div class="card-content">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <figure class="image is-48x48">
+                                                <img
+                                                        src="https://bulma.io/assets/images/placeholders/96x96.png"
+                                                        alt="Placeholder image"
+                                                />
+                                            </figure>
+                                        </div>
+                                        <div class="media-content">
+                                            <p class="title is-4">プロジェクト名</p>
+                                            <p class="subtitle is-6">プロジェクトのユーザー名</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="content">
+                                        <p class="" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+                                            プロジェクト内容
+                                        </p>
+                                        <time datetime="2016-1-1">0000年 00月 00日 00:00</time>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--    PROJECT CARD END    -->
+
+        <div class="container">
+
+            <div class="section">
+
+                <form action="">
+
+                    <div class="field">
+                        <label class="label">ユーザーID</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">パスワード</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <p class="help is-success">This username is available</p>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">パスワード再入力</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-success" type="text" placeholder="Text input" value="bulma">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <p class="help is-success">This username is available</p>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">メールアドレス</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input is-danger" type="email" placeholder="Email input" value="hello@">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                              <i class="fas fa-exclamation-triangle"></i>
+                            </span>
+                        </div>
+                        <p class="help is-danger">This email is invalid</p>
+                    </div>
+
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link">登録</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-link is-light">キャンセル</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+
+                <form action="">
+
+                    <div class="field">
+                        <label class="label">ユーザーID</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">パスワード</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Text input" value="bulma">
+                            <span class="icon is-small is-left">
+                              <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                              <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link">ログイン</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-link is-light">キャンセル</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+
+                <form action="">
+
+                    <div class="field">
+                        <label class="label">タイトル</label>
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Text input">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">プロジェクト概要</label>
+                        <div class="control">
+                            <textarea class="textarea" placeholder="Textarea"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <button class="button is-link">プロジェクトを登録</button>
+                        </div>
+                        <div class="control">
+                            <button class="button is-link is-light">キャンセル</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="section has-background-white-soft">
+                <div class="content">
+                    <h1>タイトル名</h1>
+                    <p>
+                        <strong>作成者名</strong>
+                        <span>0000年 00月 00日</span>
+                    </p>
+
+                </div>
+                <div class="content">aa</div>
+            </div>
+        </div>
+
+    </main>
+
+    <!--    MAIN END    -->
+
+
+    <!--    FOOTER START    -->
+
+    <footer class="footer p-4">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Toolbox Talk</strong> 2025
+            </p>
+        </div>
+    </footer>
+
+    <!--    FOOTER END    -->
+
+</body>
+
+</html>

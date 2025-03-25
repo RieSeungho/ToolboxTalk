@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head th:replace="common/fragments/config :: ConfigFragment">
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" th:href="@{/node_modules/bulma/css/bulma.min.css}">
-    <title layout:title-pattern="$LAYOUT_TITLE : $CONTENT_TITLE">Toolbox Talk</title>
-</head>
+<head th:replace="fragment/fragment :: head"></head>
 <body>
-<header th:replace="common/fragments/header :: HeaderFragment"></header>
-<th:block layout:fragment="Content"></th:block>
-<footer th:replace="common/fragments/footer :: FooterFragment"></footer>
+<navbar th:replace="fragment/fragment :: navbar"></navbar>
+<th:block class="hero is-fullheight-with-navbar" layout:fragment="content"></th:block>
+<footer th:replace="fragment/fragment :: footer"></footer>
 </body>
 </html>

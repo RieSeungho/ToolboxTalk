@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+<head>
+  <title>プロジェクト</title>
+</head>
+<body>
+<main layout:fragment="content">
+
+  <header th:replace="fragment/fragment :: header('プロジェクト作成')"></header>
+
+  <div class="container">
+    <div class="section">
+
+      <form th:action="@{/project/form}"
+            th:object="${projectForm}"
+            method="POST">
+
+        <div class="field">
+          <label class="label">タイトル</label>
+          <div class="control">
+            <input th:field="*{title}" class="input" type="text" placeholder="Text input">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">プロジェクト概要</label>
+          <div class="control">
+            <textarea th:field="*{content}" class="textarea" placeholder="Textarea"></textarea>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-link">プロジェクトを登録</button>
+          </div>
+          <div class="control">
+            <button class="button is-link is-light">キャンセル</button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</main>
+</body>
+</html>

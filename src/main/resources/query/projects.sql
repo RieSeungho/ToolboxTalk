@@ -28,3 +28,44 @@ FROM projects pr
 WHERE
     pr.deleted IS NULL OR
     pr.status IS NOT FALSE;
+
+SELECT
+    p.id AS project_id,
+    p.external_key,
+    p.title,
+    p.content,
+    p.permission,
+    p.status AS project_status,
+    p.created AS project_created,
+    p.updated AS project_updated,
+    p.deleted AS project_deleted,
+    m.id AS member_id,
+    m.username,
+    m.nickname,
+    m.status AS member_status,
+    m.created AS member_created
+FROM projects p
+LEFT JOIN members m ON p.member_id = m.id
+WHERE p.title LIKE CONCAT('%', '道' ,'%');
+
+SELECT
+    p.id AS project_id,
+    p.external_key,
+    p.title,
+    p.content,
+    p.permission,
+    p.status AS project_status,
+    p.created AS project_created,
+    p.updated AS project_updated,
+    p.deleted AS project_deleted,
+    m.id AS member_id,
+    m.username,
+    m.nickname,
+    m.status AS member_status,
+    m.created AS member_created
+FROM
+    projects p
+LEFT JOIN
+    members m ON p.member_id = m.id
+ORDER BY
+    project_created DESC

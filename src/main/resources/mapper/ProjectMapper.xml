@@ -4,4 +4,88 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.seu.toolboxtalk.mapper.ProjectMapper">
 
+    <resultMap id="projectResultMap" type="ProjectDTO">
+        <id column="project_id" property="id"/>
+        <result column="external_key" property="externalKey"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+        <result column="permission" property="permission"/>
+        <result column="project_status" property="status"/>
+        <result column="project_created" property="created"/>
+        <result column="project_updated" property="updated"/>
+        <result column="project_deleted" property="deleted"/>
+        <association property="member" javaType="Member">
+            <id column="member_id" property="id"/>
+            <result column="username" property="username"/>
+            <result column="nickname" property="nickname"/>
+            <result column="member_status" property="status"/>
+            <result column="member_created" property="created"/>
+        </association>
+    </resultMap>
+
+    <sql id="projectColumn">
+        p.id AS project_id,
+        p.external_key,
+        p.title,
+        p.content,
+        p.permission,
+        p.status AS project_status,
+        p.created AS project_created,
+        p.updated AS project_updated,
+        p.deleted AS project_deleted,
+        m.id AS member_id,
+        m.username,
+        m.nickname,
+        m.status AS member_status,
+        m.created AS member_created
+    </sql>
+
+    <select id="getAllProjectList" resultMap="projectResultMap">
+        SELECT
+            <include refid="projectColumn"/>
+        FROM
+            projects p
+        LEFT JOIN
+            members m ON p.member_id = m.id
+        ORDER BY
+            project_created DESC
+    </select>
+
+    <select id="getProjectListByTitle" resultMap="projectResultMap">
+        SELECT
+            <include refid="projectColumn"/>
+        FROM
+            projects p
+        LEFT JOIN
+            members m ON p.member_id = m.id
+        WHERE
+            p.title LIKE CONCAT('%', #{externalKey} ,'%');
+        ORDER BY
+            project_created DESC
+    </select>
+
+    <select id="getProjectListByExternalKey" resultMap="projectResultMap">
+        SELECT
+            <include refid="projectColumn"/>
+        FROM
+            projects p
+        LEFT JOIN
+            members m ON p.member_id = m.id
+        WHERE
+            external_key = #{externalKey}
+        ORDER BY
+            project_created DESC
+    </select>
+
+    <select id="getProjectByExternalKey" resultMap="projectResultMap">
+        SELECT
+            <include refid="projectColumn"/>
+        FROM
+            projects p
+        LEFT JOIN
+            members m ON p.member_id = m.id
+        WHERE
+            external_key = #{externalKey}
+    </select>
+
 </mapper>

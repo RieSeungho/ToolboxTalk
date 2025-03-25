@@ -2,7 +2,7 @@
 
 
 <!--    HEAD START    -->
-<head th:fragment="head(title)">
+<head th:fragment="head">
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -30,45 +30,25 @@
 
     <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-            <a class="navbar-item">
-                Home
+            <a class="navbar-item" th:href="@{/project}">
+                Project
             </a>
-
-            <a class="navbar-item">
-                Documentation
+            <a class="navbar-item" th:href="@{/personal}">
+                Personal
             </a>
-
-            <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                    More
-                </a>
-
-                <div class="navbar-dropdown">
-                    <a class="navbar-item">
-                        About
-                    </a>
-                    <a class="navbar-item is-selected">
-                        Jobs
-                    </a>
-                    <a class="navbar-item">
-                        Contact
-                    </a>
-                    <hr class="navbar-divider">
-                    <a class="navbar-item">
-                        Report an issue
-                    </a>
-                </div>
-            </div>
         </div>
 
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
+                    <a class="navbar-item">
+                        通知
+                    </a>
                     <a class="button is-primary">
-                        <strong>Sign up</strong>
+                        <strong>会員登録</strong>
                     </a>
                     <a class="button is-light">
-                        Log in
+                        ログイン
                     </a>
                 </div>
             </div>
@@ -78,18 +58,65 @@
 
 <!--    NAVBAR END    -->
 
+<!--    PROJECT LIST ADJUST LEVEL START    -->
+
+<div th:fragment="projectListAdjustLevel(projectListCount)" class="container">
+    <div class="level">
+
+        <!--    LEFT SIDE START    -->
+
+        <div class="level-left">
+            <div class="level-item">
+                <p class="subtitle is-5">
+                    <strong th:text="${projectListCount}"></strong>
+                    <span>件</span>
+                </p>
+            </div>
+            <div class="level-item">
+                <div class="field has-addons">
+                    <p class="control">
+                        <input class="input is-fullwidth" type="text" placeholder="プロジェクトを検索"/>
+                    </p>
+                    <p class="control">
+                        <button class="button">検索</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--    LEFT SIDE END    -->
+
+        <!--    RIGHT SIDE START    -->
+
+        <div class="level-right">
+            <p class="level-item">
+                <a th:href="@{/project/form}" class="button is-primary">
+                    <strong>プロジェクトを作成</strong>
+                </a>
+            </p>
+        </div>
+
+        <!--    RIGHT SIDE END    -->
+
+    </div>
+</div>
+
+<!--    PROJECT LIST ADJUST LEVEL END    -->
+
+<!--    HEADER START    -->
+
+<header th:fragment="header(phrase)" class="section has-text-centered has-text-black-bold">
+    <h1 th:text="${phrase}" class="is-size-2"></h1>
+</header>
+
+<!--    HEADER END    -->
+
 <!--    FOOTER START    -->
 
 <footer th:fragment="footer" class="footer p-4">
     <div class="content has-text-centered">
         <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>.
-            The source code is licensed
-            <a href="https://opensource.org/license/mit">MIT</a>. The
-            website content is licensed
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0//"
-            >CC BY NC SA 4.0</a
-            >.
+            <strong>Toolbox Talk</strong> 2025
         </p>
     </div>
 </footer>

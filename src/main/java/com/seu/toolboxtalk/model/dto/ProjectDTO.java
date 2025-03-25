@@ -1,21 +1,20 @@
-package com.seu.toolboxtalk.model.entity;
+package com.seu.toolboxtalk.model.dto;
 
-import lombok.AllArgsConstructor;
+import com.seu.toolboxtalk.model.entity.Member;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.ibatis.type.Alias;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
-@Alias("Project")
+@Alias("ProjectDTO")
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class Project {
+@ToString
+public class ProjectDTO {
     private Integer id;
-    private Integer memberId;
     private String externalKey;
     private String title;
     private String content;
@@ -24,4 +23,5 @@ public class Project {
     private LocalDateTime created;
     private LocalDateTime updated;
     private LocalDateTime deleted;
+    private Member member;
 }
