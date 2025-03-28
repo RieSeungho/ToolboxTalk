@@ -26,6 +26,8 @@ public class ProjectController {
 
     private static final Logger logger = LoggerFactory.getLogger(ProjectController.class);
 
+    private String ramen;
+
     @GetMapping
     public String projectList(Model model) {
 
